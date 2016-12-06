@@ -84,6 +84,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Posts.Service.ruleset" />
+    <AdditionalFiles Include="stylecop.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
