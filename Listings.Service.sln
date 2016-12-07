@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Posts.Service", "Posts.Service\Posts.Service.csproj", "{4378A508-6F9D-4F59-A467-EB729CFDBD71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listings.Service", "Listings.Service\Listings.Service.csproj", "{4378A508-6F9D-4F59-A467-EB729CFDBD71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Posts.Service.Tests", "Posts.Service.Tests\Posts.Service.Tests.csproj", "{143DE0D7-9143-438B-8457-7077E4005756}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listings.Service.Tests", "Listings.Service.Tests\Listings.Service.Tests.csproj", "{143DE0D7-9143-438B-8457-7077E4005756}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 
-namespace Posts.Service
+namespace Listings.Service
 {
     [RoutePrefix("api/listings")]
     public class ListingsController : ApiController
