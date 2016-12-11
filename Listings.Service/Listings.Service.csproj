@@ -51,6 +51,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System" />
     <Reference Include="System.Web" />
@@ -74,6 +75,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListingsRepository.cs" />
+    <Compile Include="IListingsRepository.cs" />
     <Compile Include="ListingsController.cs" />
     <Compile Include="WebApiConfig.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Web.Http;
 
@@ -8,32 +7,25 @@ namespace Listings.Service
     [RoutePrefix("api/listings")]
     public class ListingsController : ApiController
     {
-        private readonly List<Listing> _listings;
+        private readonly IListingsRepository _listingsRepository;
 
-        private ListingsController()
+        private ListingsController(IListingsRepository listingsRepository)
         {
-            _listings = new List<Listing>
-            {
-                new Listing { Id = 1, Text = "aardvark apple anus" },
-                new Listing { Id = 2, Text = "beetle boulanger bastard" },
-                new Listing { Id = 3, Text = "catnip cod cunt", Disabled = true }
-            };
+            _listingsRepository = listingsRepository;
         }
 
         [HttpGet]
         [Route("")]
-        public IList<Listing> GetAll()
+        public IList<PublicListing> GetAll()
         {
-            return _listings
-                .Where(l => !l.Disabled)
-                .ToList();
+            return _listingsRepository.GetAll();
         }
 
         [HttpGet]
         [Route("{id:int}")]
-        public Listing Get(int id)
+        public PublicListing Get(int id)
         {
-            var listing = _listings.FirstOrDefault(l => l.Id == id && !l.Disabled);
+            var listing = _listingsRepository.Get(id);
 
             if (listing == null)
             {
@@ -45,56 +37,46 @@ namespace Listings.Service
 
         [HttpPost]
         [Route("")]
-        public int Post([FromBody]NewListing listing)
+        public int Post([FromBody]Listing listing)
         {
-            var id = _listings.Max(l => l.Id) + 1;
-
-            _listings.Add(new Listing
-            {
-                Id = id,
-                Text = listing.Text,
-                Disabled = false
-            });
-
-            return id;
+            return _listingsRepository.Add(listing);
         }
 
         [HttpPut]
         [Route("{id:int}")]
-        public void Put(int id, [FromBody]NewListing newListing)
+        public void Put(int id, [FromBody]Listing update)
         {
-            var listing = _listings.FirstOrDefault(l => l.Id == id && !l.Disabled);
+            var listing = _listingsRepository.Get(id);
 
             if (listing == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            listing.Text = newListing.Text;
+            _listingsRepository.Update(id, update);
         }
 
         [HttpDelete]
         [Route("{id:int}")]
         public void Delete(int id)
         {
-            var listing = _listings.FirstOrDefault(l => l.Id == id && !l.Disabled);
+            var listing = _listingsRepository.Get(id);
 
             if (listing == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            listing.Disabled = true;
+            _listingsRepository.Delete(id);
         }
     }
 
-    public class Listing : NewListing
+    public class PublicListing : Listing
     {
         public int Id { get; set; }
-        public bool Disabled { get; set; }
     }
 
-    public class NewListing
+    public class Listing
     {
         public string Text { get; set; }
     }
