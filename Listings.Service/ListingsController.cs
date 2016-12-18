@@ -9,7 +9,7 @@ namespace Listings.Service
     {
         private readonly IListingsRepository _listingsRepository;
 
-        private ListingsController(IListingsRepository listingsRepository)
+        public ListingsController(IListingsRepository listingsRepository)
         {
             _listingsRepository = listingsRepository;
         }
