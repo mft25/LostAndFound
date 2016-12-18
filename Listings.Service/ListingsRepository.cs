@@ -1,10 +1,10 @@
-﻿namespace Listings.Service
-{
-    using System.Collections.Generic;
-    using System.Data.SqlClient;
-    using System.Linq;
-    using Dapper;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
 
+namespace Listings.Service
+{
     public class ListingsRepository : IListingsRepository
     {
         private readonly string _connectionString;

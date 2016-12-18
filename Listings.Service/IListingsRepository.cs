@@ -1,7 +1,7 @@
-﻿namespace Listings.Service
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Listings.Service
+{
     public interface IListingsRepository
     {
         PublicListing Get(int id);
