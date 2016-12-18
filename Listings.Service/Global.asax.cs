@@ -14,6 +14,7 @@ namespace Listings.Service
             // Windsor
             _container = WindsorConfig.InstallWindsor(GlobalConfiguration.Configuration, new WindsorInstaller());
 
+            // Web API
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 
