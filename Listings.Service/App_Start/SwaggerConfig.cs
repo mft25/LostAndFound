@@ -1,11 +1,11 @@
 using System.Web.Http;
-using Posts.Service;
+using Listings.Service;
 using Swashbuckle.Application;
 using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace Posts.Service
+namespace Listings.Service
 {
     public class SwaggerConfig
     {
@@ -29,7 +29,7 @@ namespace Posts.Service
                         // Use "SingleApiVersion" to describe a single version API. Swagger 2.0 includes an "Info" object to
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
-                        c.SingleApiVersion("v1", "Posts.Service");
+                        c.SingleApiVersion("v1", "Listings.Service");
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
@@ -155,6 +155,9 @@ namespace Posts.Service
                     })
                 .EnableSwaggerUi(c =>
                     {
+                        // http://stackoverflow.com/a/32244495/3437953
+                        c.DisableValidator();
+
                         // Use the "InjectStylesheet" option to enrich the UI with one or more additional CSS stylesheets.
                         // The file must be included in your project as an "Embedded Resource", and then the resource's
                         // "Logical Name" is passed to the method as shown below.

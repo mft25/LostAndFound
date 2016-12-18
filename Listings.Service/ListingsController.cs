@@ -42,6 +42,9 @@ namespace Listings.Service
             return _listingsRepository.Add(listing);
         }
 
+        /// <summary>
+        /// Use POST to create resource. PUT here is for modifications only.
+        /// </summary>
         [HttpPut]
         [Route("{id:int}")]
         public void Put(int id, [FromBody]Listing update)
