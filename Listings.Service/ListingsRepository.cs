@@ -31,7 +31,7 @@ WHERE
             {
                 return connection
                     .Query<PublicListing>(sql, new { id })
-                    .FirstOrDefault();
+                    .SingleOrDefault();
             }
         }
 

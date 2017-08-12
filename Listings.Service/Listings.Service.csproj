@@ -106,6 +106,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="IoC\WindsorConfig.cs" />
+    <Compile Include="ListingsRepositoryNoDB.cs" />
     <Compile Include="WindsorInstaller.cs" />
     <Compile Include="IoC\WindsorCompositionRoot.cs" />
     <Compile Include="IoC\WindsorDependencyScope.cs" />

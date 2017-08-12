@@ -15,7 +15,7 @@ namespace Listings.Service
                     .LifestyleTransient(),
                 Component
                     .For<IListingsRepository>()
-                    .ImplementedBy<ListingsRepository>()
+                    .ImplementedBy<ListingsRepositoryNoDB>()
                     .DependsOn(Dependency.OnValue(
                         "connectionString", ConfigurationManager.ConnectionStrings["Database"].ConnectionString)));
         }
